@@ -33,6 +33,8 @@ const ChatUI = () => {
             }
 
             const newMessages = [...messages, contextuser];
+            setMessages(newMessagesRes);
+
             console.log(messages);
             try {
                 const res = await ChatApi(newMessages, model, 1, 1, token, false)
