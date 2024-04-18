@@ -33,7 +33,9 @@ const ChatUI = () => {
             }
 
             const newMessages = [...messages, contextuser];
-            setMessages(newMessagesRes);
+            setMessages(newMessages);
+            setInput("");
+
 
             console.log(messages);
             try {
@@ -49,7 +51,6 @@ const ChatUI = () => {
             } catch (e) {
                 console.log(e)
             }
-            setInput("");
         }
     };
 
@@ -283,6 +284,11 @@ const ChatUI = () => {
                             placeholder="Type a message"
                             value={input}
                             onChange={handleInputChange}
+                            onKeyPress={(event) => {
+                                if (event.key === 'Enter') {
+                                    handleSend();
+                                }
+                            }}
                             InputProps={{
                                 sx: {
                                     borderTopLeftRadius: '15px',
